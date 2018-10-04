@@ -7,7 +7,7 @@ public abstract class Event {
 	String date;
 	int purchasedPlaces;			//  общее кол-во купленных мест
 	
-	public abstract boolean addPurchasedPlaces(int addingPurchasedPlaces);
+	public abstract boolean addPurchasedPlaces(int addingPurchasedPlaces) throws CustomException;
 	
 	
 	public int getEnterancePrice()

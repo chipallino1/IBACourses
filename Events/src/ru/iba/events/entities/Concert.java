@@ -81,9 +81,9 @@ public class Concert extends Event{
 	
 	//добавление купленных билетов не на танцполе
 	@Override
-	public boolean addPurchasedPlaces(int addingPurchasedPlaces)
+	public boolean addPurchasedPlaces(int addingPurchasedPlaces) throws CustomException
 	{
-		if(addingPurchasedPlaces>0 && (capacity-capacityDancefloor-addingPurchasedPlaces)>0)
+		if(addingPurchasedPlaces>0 && (capacity-capacityDancefloor-addingPurchasedPlaces)>=0)
 		{
 			purchasedPlaces=purchasedPlaces+addingPurchasedPlaces;
 			freePlaces=freePlaces-addingPurchasedPlaces;
@@ -91,7 +91,11 @@ public class Concert extends Event{
 			
 			return true;
 		}
-		return false;
+		else
+		{
+			throw new CustomException("No places");
+		}
+		//return false;
 	}
 	
 	public boolean setHasDancefloor(boolean settingHasDancefloor) {

@@ -11,6 +11,7 @@ public class Festival extends Event {
 			
 			return true;
 		}
+		
 		return false;
 		
 	}
