@@ -1,6 +1,12 @@
 package ru.iba.trainning.files;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class Files {
@@ -46,7 +52,7 @@ public class Files {
 		File file=new File(Path);
 		if(file.isDirectory())
 		{
-			return "it is directory";
+			return null;
 		}
 		
 		int lastIndex=Path.lastIndexOf('.');
@@ -57,12 +63,55 @@ public class Files {
 		
 		
 	}
-	public static boolean SortFiles(String srcPath,String destPath) {
+	public static boolean SortFiles(ArrayList<File> filesArr,String destPath) {
 		
-		
+		for(int i=0;i<filesArr.size();i++)
+		{
+			File file=filesArr.get(i);
+			
+			
+			if(file.isFile())
+			{
+				String extension=getExtension(file.getPath());
+				String dest=destPath+"\\"+extension;
+				File destFile=new File(dest);
+				if(!destFile.exists())
+				{
+					
+				}
+			}
+		}
 		
 		return false;
 		
+		
+	}
+	public static boolean copy(File srcFile,File destDirFile)
+	{
+		
+		
+		String src=srcFile.getPath();
+		String destDir=destDirFile.getPath();
+		String name=srcFile.getName();
+		
+		try(InputStream is=new FileInputStream(src);
+				OutputStream os=new FileOutputStream(destDir+"\\"+name))
+		{
+			int length=is.available();
+			byte[] buffer=new byte[length];
+			int readsLen;
+			while((readsLen=is.read(buffer))>0)
+			{
+				os.write(buffer, 0, readsLen);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
 		
 	}
 	
@@ -83,9 +132,10 @@ public class Files {
 		for(int i=0;i<files.size();i++)
 		{
 			
-			System.out.println(files.get(i).getPath());
+			System.out.println(files.get(i).getPath());//null mean that it is dir
 			System.out.println("Extension: "+getExtension(files.get(i).getPath()));
 		}
+		Files.copy(new File("D:\\Универ\\Учеб\\3 курс\\пкп\\Tasks\\Task01\\hello.txt"), new File("D:\\Универ\\Учеб\\3 курс"));
 	}
 	
 }
