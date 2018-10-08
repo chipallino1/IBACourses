@@ -13,6 +13,7 @@ public class Files {
 
 	public static ArrayList<File> listFiles=new ArrayList<>();
 	
+	//get all files and subdirs and subfiles and subsubdirs(recursion)
 	public static ArrayList<File> getFilesSub(String Path)
 	{
 		
@@ -63,7 +64,8 @@ public class Files {
 		
 		
 	}
-	public static boolean SortFiles(ArrayList<File> filesArr,String destPath) {
+	//copy files with same extension to the same dir
+	public static boolean sortFiles(ArrayList<File> filesArr,String destPath) {
 		
 		for(int i=0;i<filesArr.size();i++)
 		{
@@ -75,14 +77,20 @@ public class Files {
 				String extension=getExtension(file.getPath());
 				String dest=destPath+"\\"+extension;
 				File destFile=new File(dest);
-				if(!destFile.exists())
+				if(destFile.exists())
 				{
+					copy(file,destFile);
 					
+				}
+				else
+				{
+					destFile.mkdir();
+					copy(file,destFile);
 				}
 			}
 		}
 		
-		return false;
+		return true;
 		
 		
 	}
@@ -119,8 +127,8 @@ public class Files {
 	
 	public static void main(String[] args)
 	{
-		//get all files and subdirs and subfiles and subsubdirs(recursion)
-		String path="D:\\Универ\\Учеб\\3 курс\\пкп\\Tasks\\Task01";//please set your path from file system
+		
+		String path="D:\\Универ\\Учеб\\3 курс";//please set your path from file system
 		//(if you set path from properties of file may be it will be a problem because there is a hidden symbol sometimes)
 		//
 		ArrayList<File> files;
@@ -135,7 +143,10 @@ public class Files {
 			System.out.println(files.get(i).getPath());//null mean that it is dir
 			System.out.println("Extension: "+getExtension(files.get(i).getPath()));
 		}
-		Files.copy(new File("D:\\Универ\\Учеб\\3 курс\\пкп\\Tasks\\Task01\\hello.txt"), new File("D:\\Универ\\Учеб\\3 курс"));
+		
+		Files.sortFiles(files, "D:\\Универ\\Учеб\\3 курс\\IBAcourses\\test");//please set your path from file system
+		//(if you set path from properties of file may be it will be a problem because there is a hidden symbol sometimes)
+		
 	}
 	
 }
