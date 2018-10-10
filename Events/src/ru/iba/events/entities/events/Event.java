@@ -1,10 +1,13 @@
-package ru.iba.events.entities;
+package ru.iba.events.entities.events;
+
+import ru.iba.events.entities.exceptions.CustomException;
 
 public abstract class Event {
 	protected int id;
 	protected int enterancePrice;
 	protected String name;
 	protected String date;
+	protected String time;
 	protected int purchasedPlaces;			//  общее кол-во купленных мест
 	
 	public abstract boolean addPurchasedPlaces(int addingPurchasedPlaces) throws CustomException;
@@ -28,7 +31,9 @@ public abstract class Event {
 		// TODO Auto-generated method stub
 		return date;
 	}
-	
+	public String getTime() {
+		return time;
+	}
 	public boolean setEnterancePrice(int enterancePriceSetting)
 	{
 		if(enterancePriceSetting>=0)
@@ -52,6 +57,7 @@ public abstract class Event {
 				name=nameSetting;
 				return true;			
 			}
+		
 		return false;
 	}
 
@@ -59,6 +65,16 @@ public abstract class Event {
 		if(dateSetting!=null && !dateSetting.isEmpty())
 		{
 			date=dateSetting;
+			return true;
+		}
+		
+		return false;
+	}
+	public boolean setTime(String Time)
+	{
+		if(Time!=null && !Time.isEmpty())
+		{
+			date=Time;
 			return true;
 		}
 		return false;

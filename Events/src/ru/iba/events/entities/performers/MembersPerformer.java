@@ -1,4 +1,4 @@
-package ru.iba.events.entities;
+package ru.iba.events.entities.performers;
 
 public class MembersPerformer {
 	

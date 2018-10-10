@@ -1,10 +1,13 @@
-package ru.iba.events.entities;
+package ru.iba.events.entities.events;
 
 import java.io.Serializable;
+
+import ru.iba.events.entities.exceptions.CustomException;
 
 public class Concert extends Event implements Serializable{
 
 	private int capacity;					//	вместимость	(вместимость не на тацполе = вместимость-вместиомсть на тнацоле)
+	private boolean isSettingCapacity=false;		// 	установлена ли вместимость(вместимость устанавливается 1 раз)
 	private int freePlaces;					//  общее кол-во свободных мест
 	private boolean hasDancefloor;    		//  есть ли танцпол
 	private int capacityDancefloor;			//  кол-во мест на танцполе 
@@ -16,7 +19,10 @@ public class Concert extends Event implements Serializable{
 		return capacity;
 		
 	}	
-	
+	public boolean getIsSettingCapacity()
+	{
+		return isSettingCapacity;
+	}
 	public int getFreePlaces() {
 		
 		return freePlaces;
@@ -52,15 +58,15 @@ public class Concert extends Event implements Serializable{
 	
 	public boolean setCapacity(int settingCapacity) {
 		
-		if(settingCapacity>0)
+		if(settingCapacity>0 && !isSettingCapacity)
 		{
 			capacity=settingCapacity;
+			
 			return true;
 		}
 		return false;
 		
 	}
-	
 	//добавление свободных мест не на танцпол
 	public boolean addFreePlaces(int addingFreePlaces,boolean returning) { 
 		

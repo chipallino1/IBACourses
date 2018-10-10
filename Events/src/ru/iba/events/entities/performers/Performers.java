@@ -1,4 +1,4 @@
-package ru.iba.events.entities;
+package ru.iba.events.entities.performers;
 
 //класс исполнителей, исполнителем моет €вл€тс€ кака€-нибудь фирма на фестивале,
 //например какое-нибудьь кафе

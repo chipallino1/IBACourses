@@ -1,4 +1,4 @@
-package ru.iba.events.entities;
+package ru.iba.events.entities.events;
 
 public class Festival extends Event {
 

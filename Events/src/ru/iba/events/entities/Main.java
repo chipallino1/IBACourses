@@ -1,20 +1,26 @@
 package ru.iba.events.entities;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import ru.iba.events.entities.users.SimpleUser;
+
+
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		
-		Concert concert=new Concert();
+		String date="10.  10.  2018";
+		date=date.replaceAll(" ", "");
+		String[] splits=date.split("\\d{2}\\.\\d{2}\\.\\d{4}");
 		
-		concert.setCapacity(10);
-		
-		try {
-			concert.addPurchasedPlaces(10);//if you add more than capacity it will exception
-		} catch (CustomException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
-		}
-		
+		for(int i=0;i<splits.length;i++)
+			System.out.println(splits[i]);
 
 	}
 
