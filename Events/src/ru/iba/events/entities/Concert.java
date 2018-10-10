@@ -1,13 +1,15 @@
 package ru.iba.events.entities;
 
-public class Concert extends Event{
+import java.io.Serializable;
 
-	int capacity;					//	вместимость	(вместимость не на тацполе = вместимость-вместиомсть на тнацоле)
-	int freePlaces;					//  общее кол-во свободных мест
-	boolean hasDancefloor;    		//  есть ли танцпол
-	int capacityDancefloor;			//  кол-во мест на танцполе 
-	int freePlacesDancefloor;		//  кол-во свободных мест на танцполе
-	int purchasedPlacesDancefloor;	//  кол-во купленных мест на танцполе
+public class Concert extends Event implements Serializable{
+
+	private int capacity;					//	вместимость	(вместимость не на тацполе = вместимость-вместиомсть на тнацоле)
+	private int freePlaces;					//  общее кол-во свободных мест
+	private boolean hasDancefloor;    		//  есть ли танцпол
+	private int capacityDancefloor;			//  кол-во мест на танцполе 
+	private int freePlacesDancefloor;		//  кол-во свободных мест на танцполе
+	private int purchasedPlacesDancefloor;	//  кол-во купленных мест на танцполе
 	
 	public int getCapacity() {
 		

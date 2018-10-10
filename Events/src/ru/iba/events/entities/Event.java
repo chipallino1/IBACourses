@@ -1,11 +1,11 @@
 package ru.iba.events.entities;
 
 public abstract class Event {
-	int id;
-	int enterancePrice;
-	String name;
-	String date;
-	int purchasedPlaces;			//  общее кол-во купленных мест
+	protected int id;
+	protected int enterancePrice;
+	protected String name;
+	protected String date;
+	protected int purchasedPlaces;			//  общее кол-во купленных мест
 	
 	public abstract boolean addPurchasedPlaces(int addingPurchasedPlaces) throws CustomException;
 	

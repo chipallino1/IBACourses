@@ -4,9 +4,8 @@ package ru.iba.events.entities;
 //например какое-нибудьь кафе
 public class Performers {
 	
-	int id;
-	String name;
-	
-	MembersPerformer[] members;//участники фирмы на фестивале/участники группы на концерте
+	private int id;
+	private String name;	
+	private MembersPerformer[] members;//участники фирмы на фестивале/участники группы на концерте
 
 }

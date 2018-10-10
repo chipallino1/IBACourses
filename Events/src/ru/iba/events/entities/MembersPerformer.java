@@ -2,9 +2,9 @@ package ru.iba.events.entities;
 
 public class MembersPerformer {
 	
-	String name;
-	int age;
-	String additional;
+	private String name;
+	private int age;
+	private String additional;
 	
 	
 	
