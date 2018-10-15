@@ -1,5 +1,8 @@
 package ru.iba.events.entities.events;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import ru.iba.events.entities.exceptions.CustomException;
 
 public abstract class Event {
@@ -62,7 +65,11 @@ public abstract class Event {
 	}
 
 	public boolean setDate(String dateSetting) {
-		if(dateSetting!=null && !dateSetting.isEmpty())
+		if(dateSetting==null)
+			return false;
+		Pattern p = Pattern.compile("(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\\d\\d)");  
+        Matcher m = p.matcher(dateSetting);  
+		if(m.matches() && !dateSetting.isEmpty())
 		{
 			date=dateSetting;
 			return true;
@@ -72,9 +79,14 @@ public abstract class Event {
 	}
 	public boolean setTime(String Time)
 	{
-		if(Time!=null && !Time.isEmpty())
+		//^([01]?[0-9]|2[0-3])(:|\-)([0-5][0-9])$
+		Pattern p = Pattern.compile("^([01]?[0-9]|2[0-3])(:|\\-)([0-5][0-9])$");  
+        Matcher m = p.matcher(Time);  
+		if(Time==null)
+			return false;
+		if(m.matches() && !Time.isEmpty())
 		{
-			date=Time;
+			time=Time;
 			return true;
 		}
 		return false;
