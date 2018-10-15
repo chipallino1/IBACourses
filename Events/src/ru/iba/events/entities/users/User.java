@@ -1,5 +1,8 @@
 package ru.iba.events.entities.users;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public abstract class User {
 
 	protected int id;
@@ -39,7 +42,9 @@ public abstract class User {
 		{
 			return false;//will add a "throw new exc"
 		}
-		if(Login=="")
+		Pattern p = Pattern.compile("^\\w+$");  
+        Matcher m = p.matcher(Login);  
+		if(!m.matches() || Login=="")
 		{
 			return false;//will add a "throw new exc"
 		}
@@ -53,7 +58,9 @@ public abstract class User {
 		{
 			return false;//will add a "throw new exc"
 		}
-		if(Firstname=="")
+		Pattern p = Pattern.compile("^[Р-пр-џ]+|[A-Za-z]+$");  
+        Matcher m = p.matcher(Firstname);  
+		if(!m.matches() || Firstname=="")
 		{
 			return false;//will add a "throw new exc"
 		}
@@ -67,7 +74,9 @@ public abstract class User {
 		{
 			return false;//will add a "throw new exc"
 		}
-		if(Lastname=="")
+		Pattern p = Pattern.compile("^[Р-пр-џ]+|[A-Za-z]+$");  
+        Matcher m = p.matcher(Lastname);  
+		if(!m.matches() || Lastname=="")
 		{
 			return false;//will add a "throw new exc"
 		}
@@ -75,14 +84,19 @@ public abstract class User {
 		return true;
 		
 	}
-	public boolean setEmail(String email)
+	public boolean setEmail(String Email)
 	{
-		if(email==null || email.equals(""))
+		if(Email==null)
+		{
 			return false;
-		
-		
-		boolean result = email.matches("\\w+@\\w+");
-		System.out.println(result);
+		}
+		Pattern p = Pattern.compile("^(\\w+|\\w+[.-]\\w+)@([a-zA-Z]{2,}|[р-џР-п]{2,})\\.([a-zA-Z]{2,}|[р-џР-п]{2,})$");  
+        Matcher m = p.matcher(Email);  
+		if(!m.matches() || Email.equals(""))
+		{
+			return false;
+		}
+		email=Email;
 		return true;
 	}
 	public boolean setPhoneNumber(String PhoneNumber) {
@@ -90,7 +104,9 @@ public abstract class User {
 		{
 			return false;//will add a "throw new exc"
 		}
-		if(PhoneNumber=="")
+		Pattern p = Pattern.compile("^(\\+?375|80)(29|25|44|33|17)\\d{7}$");  
+        Matcher m = p.matcher(PhoneNumber);  
+		if(!m.matches() || PhoneNumber=="")
 		{
 			return false;//will add a "throw new exc"
 		}
