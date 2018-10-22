@@ -1,11 +1,17 @@
 create database festival_db;
 
-create table festival_db.event (
+create table festival_db.events (
 	Id int not null primary key auto_increment,
     name varchar(45) not null,
     type varchar(45) not null,
     date date not null,
     id_places int 
+);
+
+create table festival_db.places(
+	Id int not null primary key auto_increment,
+    count_dancefloor int,
+    count_all int not null
 );
 
 create table festival_db.members (
